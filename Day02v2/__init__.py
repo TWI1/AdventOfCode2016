@@ -180,17 +180,17 @@ def solve_keypad_puzzle(keypad, sequences):
 #Get the output
 fname='/media/stor_arch/TEMP!!!/input.txt'
 with open(fname) as f:
-    input = f.readlines()
+    file_input = f.readlines()
 
 #Solve 2a
 keypad1=keypad_rectangle(3,3)
-solution1=solve_keypad_puzzle(keypad1, input)
+solution1=solve_keypad_puzzle(keypad1, file_input)
 print(solution1)
 
 #Solve 2b
 keypad2=keypad_diamond(5)
 #b=solve_keypad_puzzle(a, inp1)    #DIAG
-solution2=solve_keypad_puzzle(keypad2, input) 
+solution2=solve_keypad_puzzle(keypad2, file_input) 
 print(solution2)
 
 
