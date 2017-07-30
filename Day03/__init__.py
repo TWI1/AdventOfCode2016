@@ -47,7 +47,8 @@ def number_of_triangles_in_columns(list_old):
 # ========================================== program
 
 #Get the output
-fname='/media/stor_arch/TEMP!!!/input03.txt'
+#fname='/media/stor_arch/TEMP!!!/input03.txt'
+fname='/media/stor_main/!0_Projekty/!0_Dev/AdventOfCode2016/input04.txt'
 parsed_input=parse_file(fname)      
 #print(parsed_input)                    #DIAG
         
