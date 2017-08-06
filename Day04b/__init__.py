@@ -117,6 +117,8 @@ def process_rooms_intput(input):
         sum_of_real_room_id=sum_of_real_room_id+process_room_record(i)
     return sum_of_real_room_id
 
+def alphabet_rotation
+ 
 #parse record
 #take next char
 #if dash or ', ignore it
@@ -140,8 +142,13 @@ print(sum)
 
 str='a'
 print(int(str)+1)
+
 #print(a)
 #print(a+1)
 #for i in input:
 #    id_sum=id_sum+process_room_record(i) 
     
+    
+    
+#Part B
+#https://stackoverflow.com/questions/8886947/caesar-cipher-function-in-python
