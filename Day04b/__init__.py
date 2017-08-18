@@ -18,17 +18,22 @@ def parse_file(file_name):
     #return output
 
 def process_room_record(record):
+    #print('Record: ',record)
     encountered_letters=[]
     encountered_letters_counts=[]
     room_id=[]
     checksum=[]
     reading_checksum=False
+    room_name=[]
     for l in record:
         #print("Processing letter ", l, ":")
         if l in ignore_list:
+            if reading_checksum==False:
+                room_name.append(l)
             pass
         elif l in letters_list:
             if not reading_checksum:
+                room_name.append(l)                
                 if l in encountered_letters:
                     ind=encountered_letters.index(l)
                     encountered_letters_counts[ind]=encountered_letters_counts[ind]+1
@@ -44,7 +49,12 @@ def process_room_record(record):
             room_id.append(l)
         else:
             break
-        
+    
+    room_name = ''.join(room_name)
+    #room_id = int(room_id)
+    #print('Room name: ', room_name)    
+    #encountered_letters_copy=encountered_letters.copy()
+    
     #DIAG
     #print("encountered letters:",encountered_letters)
     #print("encountered letter counts:",encountered_letters_counts)
@@ -107,6 +117,13 @@ def process_room_record(record):
         #print("Real room!")
         room_id = ''.join(room_id)
         room_id = int(room_id)
+        #print(encountered_letters_copy)
+        rotation_number=room_id%26
+        rotated_room_name=alphabet_rotation(room_name, rotation_number)
+        print('***********************')
+        print('Room name: ', room_name)
+        print('Rotated room name: ', rotated_room_name)
+        print('Room ID: ', room_id)
         return room_id
     else:
         return 0
@@ -117,7 +134,15 @@ def process_rooms_intput(input):
         sum_of_real_room_id=sum_of_real_room_id+process_room_record(i)
     return sum_of_real_room_id
 
-def alphabet_rotation
+def alphabet_rotation(str, shift):
+    alphabet=string.ascii_lowercase
+    shifted_alphabet = alphabet[shift:] + alphabet[:shift]
+    dash='-'
+    space=' '
+    alphabet=alphabet+dash
+    shifted_alphabet=shifted_alphabet+space       
+    table = str.maketrans(alphabet, shifted_alphabet)
+    return str.translate(table)
  
 #parse record
 #take next char
@@ -140,9 +165,12 @@ print(sum)
 #print("Record 0: ", input[0])
 #a=process_room_record(input[0])
 
-str='a'
-print(int(str)+1)
+#str='a'
+#print(int(str)+1)
+str='a-b-c-x'
+shift=2
 
+print(alphabet_rotation(str, shift))
 #print(a)
 #print(a+1)
 #for i in input:
